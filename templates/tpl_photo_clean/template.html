@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1080" />
+  <style>
+    /* ── Reset ─────────────────────────────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* ── Canvas: strict 1080×1080 for Instagram ────────────── */
+    html, body {
+      width: 1080px;
+      height: 1080px;
+      overflow: hidden;
+      background: #000;
+    }
+
+    /* ── Root container ─────────────────────────────────────── */
+    .frame {
+      position: relative;
+      width: 1080px;
+      height: 1080px;
+      overflow: hidden;
+    }
+
+    /* ── Full-bleed background photo ────────────────────────── */
+    .bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('{{imageUrl}}');
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* ── Subtle vignette for depth ──────────────────────────── */
+    .vignette {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.45) 100%);
+      pointer-events: none;
+    }
+
+    /* ── Bottom gradient scrim — ensures badge legibility ───── */
+    .scrim {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 340px;
+      background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    /* ── Hook badge ─────────────────────────────────────────── */
+    .badge-wrap {
+      position: absolute;
+      bottom: 72px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 880px;
+      box-sizing: border-box;
+      direction: rtl;
+    }
+
+    .badge {
+      display: block;      /* block so it respects .badge-wrap width */
+      background: {{brandColor}};
+      border-radius: 20px;
+      padding: 22px 52px;
+      box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.35),
+        0 2px 8px rgba(0, 0, 0, 0.20);
+      text-align: center;
+    }
+
+    .badge-text {
+      font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+      font-size: 52px;     /* slightly smaller to fit 10-15 word sentences */
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.35;
+      text-align: center;
+      direction: rtl;
+      letter-spacing: -0.5px;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+      overflow-wrap: anywhere;
+      word-wrap: break-word;
+      word-break: break-word;
+      white-space: normal;
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+    /* ── Logo — top-right corner ────────────────────────────── */
+    .logo-wrap {
+      position: absolute;
+      top: 40px;
+      right: 44px;
+      width: 110px;
+      height: 110px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.20);
+    }
+
+    .logo-wrap img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    /* ── Brand color accent line — top edge ─────────────────── */
+    .accent-line {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 7px;
+      background: {{brandColor}};
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <!-- Background photo -->
+    <div class="bg"></div>
+
+    <!-- Depth effects -->
+    <div class="vignette"></div>
+    <div class="scrim"></div>
+
+    <!-- Top brand accent line -->
+    <div class="accent-line"></div>
+
+    <!-- Logo (shown only when logoUrl is provided) -->
+    {{#if logoUrl}}
+    <div class="logo-wrap">
+      <img src="{{logoUrl}}" alt="logo" />
+    </div>
+    {{/if}}
+
+    <!-- Hook badge (hidden when hook is empty — e.g. inner carousel slides) -->
+    {{#if hook}}
+    <div class="badge-wrap">
+      <div class="badge">
+        <div class="badge-text">{{hook}}</div>
+      </div>
+    </div>
+    {{/if}}
+  </div>
+</body>
+</html>
