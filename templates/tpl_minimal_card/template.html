@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1080" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      width: 1080px;
+      height: 1080px;
+      overflow: hidden;
+      background: #f8f8f6;
+    }
+
+    .frame {
+      position: relative;
+      width: 1080px;
+      height: 1080px;
+      background: #f8f8f6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* White card */
+    .card {
+      position: relative;
+      width: 880px;
+      height: 880px;
+      background: #ffffff;
+      border: 1px solid #e8e8e6;
+      border-radius: 20px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top half — image */
+    .image-half {
+      position: relative;
+      flex: 0 0 460px;
+      overflow: hidden;
+    }
+
+    .card-image {
+      width: 100%;
+      height: 460px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    /* Brand accent bar at bottom of image */
+    .image-accent {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: {{brandColor}};
+    }
+
+    /* Bottom half — text */
+    .text-half {
+      flex: 1;
+      padding: 40px 52px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      direction: rtl;
+    }
+
+    .hook-text {
+      font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+      font-size: 52px;
+      font-weight: 800;
+      color: #1a1a1a;
+      line-height: 1.2;
+      text-align: right;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      white-space: normal;
+      margin-bottom: 16px;
+    }
+
+    .body-text {
+      font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+      font-size: 26px;
+      font-weight: 400;
+      color: #6b6b6b;
+      line-height: 1.5;
+      text-align: right;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      white-space: normal;
+    }
+
+    /* Footer with brand dot + logo */
+    .card-footer {
+      position: absolute;
+      bottom: 28px;
+      left: 52px;
+      right: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: {{brandColor}};
+      flex-shrink: 0;
+    }
+
+    .logo-wrap img {
+      height: 36px;
+      max-width: 140px;
+      object-fit: contain;
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <div class="card">
+      <!-- Image top half -->
+      <div class="image-half">
+        <img class="card-image" src="{{imageUrl}}" alt="" />
+        <div class="image-accent"></div>
+      </div>
+
+      <!-- Text bottom half -->
+      {{#if hook}}
+      <div class="text-half">
+        <div class="hook-text">{{hook}}</div>
+        <div class="body-text">{{body}}</div>
+      </div>
+      {{/if}}
+
+      <!-- Footer -->
+      <div class="card-footer">
+        <div class="brand-dot"></div>
+        {{#if logoUrl}}
+        <div class="logo-wrap">
+          <img src="{{logoUrl}}" alt="logo" />
+        </div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</body>
+</html>
