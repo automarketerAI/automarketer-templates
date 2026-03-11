@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1080" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      width: 1080px;
+      height: 1080px;
+      overflow: hidden;
+    }
+
+    .frame {
+      position: relative;
+      width: 1080px;
+      height: 1080px;
+      background-color: {{brandColor}};
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 100px;
+    }
+
+    /* Noise texture overlay */
+    .noise {
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.06'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+      pointer-events: none;
+      opacity: 0.5;
+    }
+
+    /* Giant hook text */
+    .hook-text {
+      font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+      font-size: 96px;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.15;
+      text-align: center;
+      direction: rtl;
+      letter-spacing: -2px;
+      text-shadow: 0 4px 24px rgba(0,0,0,0.3);
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      white-space: normal;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Divider */
+    .divider {
+      width: 80px;
+      height: 5px;
+      background: rgba(255,255,255,0.6);
+      border-radius: 3px;
+      margin: 40px auto;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Body text */
+    .body-text {
+      font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+      font-size: 32px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.5;
+      text-align: center;
+      direction: rtl;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      white-space: normal;
+      width: 100%;
+      max-width: 800px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Logo — bottom-left */
+    .logo-wrap {
+      position: absolute;
+      bottom: 48px;
+      left: 56px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-wrap img {
+      height: 60px;
+      max-width: 200px;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+      opacity: 0.9;
+    }
+
+    /* Business name — bottom-right */
+    .biz-name {
+      position: absolute;
+      bottom: 56px;
+      right: 56px;
+      font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      direction: rtl;
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <div class="noise"></div>
+
+    {{#if hook}}
+    <div class="hook-text">{{hook}}</div>
+    <div class="divider"></div>
+    <div class="body-text">{{body}}</div>
+    {{/if}}
+
+    {{#if logoUrl}}
+    <div class="logo-wrap">
+      <img src="{{logoUrl}}" alt="logo" />
+    </div>
+    {{/if}}
+
+    {{#if businessName}}
+    <div class="biz-name">{{businessName}}</div>
+    {{/if}}
+  </div>
+</body>
+</html>
