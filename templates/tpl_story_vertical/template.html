@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1080" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .frame {
+      position: relative;
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+    }
+
+    /* Full-bleed background */
+    .bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('{{imageUrl}}');
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* Multi-stop gradient */
+    .gradient-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.55) 0%,
+        rgba(0,0,0,0.05) 25%,
+        rgba(0,0,0,0.05) 60%,
+        rgba(0,0,0,0.75) 100%
+      );
+    }
+
+    /* Top section — logo + business name */
+    .top-bar {
+      position: absolute;
+      top: 60px;
+      left: 56px;
+      right: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      direction: rtl;
+    }
+
+    .logo-wrap img {
+      height: 64px;
+      max-width: 220px;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+      opacity: 0.92;
+    }
+
+    /* Business name pill */
+    .biz-pill {
+      background: {{brandColor}};
+      color: #fff;
+      font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      padding: 12px 32px;
+      border-radius: 100px;
+      letter-spacing: 0.5px;
+      direction: rtl;
+    }
+
+    /* Bottom content */
+    .bottom-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 0 64px 80px;
+    }
+
+    /* Hook text */
+    .hook-text {
+      font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+      font-size: 88px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.15;
+      text-align: right;
+      direction: rtl;
+      letter-spacing: -1.5px;
+      text-shadow: 0 4px 24px rgba(0,0,0,0.5);
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      white-space: normal;
+      margin-bottom: 32px;
+    }
+
+    /* Body text */
+    .body-text {
+      font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+      font-size: 36px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.5;
+      text-align: right;
+      direction: rtl;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      white-space: normal;
+      margin-bottom: 36px;
+    }
+
+    /* CTA decorative bar */
+    .cta-bar {
+      width: 80px;
+      height: 6px;
+      background: {{brandColor}};
+      border-radius: 3px;
+      margin-right: auto;
+      margin-bottom: 28px;
+    }
+
+    /* "Continue reading" hint */
+    .continue-hint {
+      font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+      font-size: 26px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      direction: rtl;
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <div class="bg"></div>
+    <div class="gradient-overlay"></div>
+
+    <!-- Top bar -->
+    <div class="top-bar">
+      {{#if logoUrl}}
+      <div class="logo-wrap">
+        <img src="{{logoUrl}}" alt="logo" />
+      </div>
+      {{/if}}
+      {{#if businessName}}
+      <div class="biz-pill">{{businessName}}</div>
+      {{/if}}
+    </div>
+
+    <!-- Bottom content -->
+    {{#if hook}}
+    <div class="bottom-content">
+      <div class="cta-bar"></div>
+      <div class="hook-text">{{hook}}</div>
+      <div class="body-text">{{body}}</div>
+      <div class="continue-hint">המשך לקרוא ↓</div>
+    </div>
+    {{/if}}
+  </div>
+</body>
+</html>
