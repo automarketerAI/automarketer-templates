@@ -1,26 +1,97 @@
 [
   {
-    "id": "tpl_photo_clean",
-    "name": "תמונה נקייה",
+    "id": "tpl_bold_typography",
+    "name": "tpl_bold_typography",
     "category": "photo",
-    "supports": ["static_post", "carousel"],
+    "supports": [
+      "static_post",
+      "carousel"
+    ],
     "thumbnail": null,
-    "html": "https://raw.githubusercontent.com/automarketerAI/automarketer-templates/main/tpl_photo_clean/template.html"
+    "html": "https://raw.githubusercontent.com/automarketerAI/automarketer-templates/main/templates/tpl_bold_typography/template.html",
+    "source": "github"
+  },
+  {
+    "id": "tpl_dark_luxury",
+    "name": "tpl_dark_luxury",
+    "category": "photo",
+    "supports": [
+      "static_post",
+      "carousel"
+    ],
+    "thumbnail": null,
+    "html": "https://raw.githubusercontent.com/automarketerAI/automarketer-templates/main/templates/tpl_dark_luxury/template.html",
+    "source": "github"
+  },
+  {
+    "id": "tpl_magazine",
+    "name": "tpl_magazine",
+    "category": "photo",
+    "supports": [
+      "static_post",
+      "carousel"
+    ],
+    "thumbnail": null,
+    "html": "https://raw.githubusercontent.com/automarketerAI/automarketer-templates/main/templates/tpl_magazine/template.html",
+    "source": "github"
+  },
+  {
+    "id": "tpl_minimal_card",
+    "name": "tpl_minimal_card",
+    "category": "photo",
+    "supports": [
+      "static_post",
+      "carousel"
+    ],
+    "thumbnail": null,
+    "html": "https://raw.githubusercontent.com/automarketerAI/automarketer-templates/main/templates/tpl_minimal_card/template.html",
+    "source": "github"
+  },
+  {
+    "id": "tpl_photo_clean",
+    "name": "tpl_photo_clean",
+    "category": "photo",
+    "supports": [
+      "static_post",
+      "carousel"
+    ],
+    "thumbnail": null,
+    "html": "https://raw.githubusercontent.com/automarketerAI/automarketer-templates/main/templates/tpl_photo_clean/template.html",
+    "source": "github"
   },
   {
     "id": "tpl_quote_solid",
-    "name": "ציטוט מלא",
+    "name": "tpl_quote_solid",
     "category": "quote",
-    "supports": ["static_post"],
+    "supports": [
+      "static_post",
+      "carousel"
+    ],
     "thumbnail": null,
-    "html": "https://raw.githubusercontent.com/automarketerAI/automarketer-templates/main/tpl_quote_solid/template.html"
+    "html": "https://raw.githubusercontent.com/automarketerAI/automarketer-templates/main/templates/tpl_quote_solid/template.html",
+    "source": "github"
   },
   {
     "id": "tpl_split",
-    "name": "מסך מפוצל",
+    "name": "tpl_split",
     "category": "split",
-    "supports": ["static_post", "carousel"],
+    "supports": [
+      "static_post",
+      "carousel"
+    ],
     "thumbnail": null,
-    "html": "https://raw.githubusercontent.com/automarketerAI/automarketer-templates/main/tpl_split/template.html"
+    "html": "https://raw.githubusercontent.com/automarketerAI/automarketer-templates/main/templates/tpl_split/template.html",
+    "source": "github"
+  },
+  {
+    "id": "tpl_story_vertical",
+    "name": "tpl_story_vertical",
+    "category": "photo",
+    "supports": [
+      "story"
+    ],
+    "thumbnail": null,
+    "html": "https://raw.githubusercontent.com/automarketerAI/automarketer-templates/main/templates/tpl_story_vertical/template.html",
+    "source": "github"
   }
 ]
