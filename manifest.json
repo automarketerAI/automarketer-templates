@@ -1,0 +1,26 @@
+[
+  {
+    "id": "tpl_photo_clean",
+    "name": "תמונה נקייה",
+    "category": "photo",
+    "supports": ["static_post", "carousel"],
+    "thumbnail": null,
+    "html": "https://raw.githubusercontent.com/automarketerAI/automarketer-templates/main/tpl_photo_clean/template.html"
+  },
+  {
+    "id": "tpl_quote_solid",
+    "name": "ציטוט מלא",
+    "category": "quote",
+    "supports": ["static_post"],
+    "thumbnail": null,
+    "html": "https://raw.githubusercontent.com/automarketerAI/automarketer-templates/main/tpl_quote_solid/template.html"
+  },
+  {
+    "id": "tpl_split",
+    "name": "מסך מפוצל",
+    "category": "split",
+    "supports": ["static_post", "carousel"],
+    "thumbnail": null,
+    "html": "https://raw.githubusercontent.com/automarketerAI/automarketer-templates/main/tpl_split/template.html"
+  }
+]
