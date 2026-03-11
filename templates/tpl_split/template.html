@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1080" />
+  <style>
+    /* ── Reset ─────────────────────────────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* ── Canvas: strict 1080×1080 for Instagram ────────────── */
+    html, body {
+      width: 1080px;
+      height: 1080px;
+      overflow: hidden;
+      background: #FAFAFA;
+    }
+
+    /* ── Root: vertical flex split ──────────────────────────── */
+    .frame {
+      position: relative;
+      width: 1080px;
+      height: 1080px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Top half: full-bleed photo ─────────────────────────── */
+    .photo {
+      flex: 0 0 510px;          /* 510px ≈ 47% — gives text panel more breathing room */
+      background-image: url('{{imageUrl}}');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle inner-shadow at bottom of photo for smooth transition */
+    .photo::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background: linear-gradient(to top, rgba(250,250,250,0.6) 0%, transparent 100%);
+    }
+
+    /* ── Separator line — brand color ───────────────────────── */
+    .separator {
+      flex: 0 0 6px;
+      background: {{brandColor}};
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ── Bottom half: typography panel ──────────────────────── */
+    .text-panel {
+      flex: 1;
+      background: #FAFAFA;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 80px 60px;
+      gap: 0;
+      position: relative;
+    }
+
+    /* ── Decorative brand-color dot above hook ──────────────── */
+    .brand-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: {{brandColor}};
+      margin-bottom: 28px;
+      opacity: 0.85;
+    }
+
+    /* ── Hook text ──────────────────────────────────────────── */
+    .hook-text {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 58px;
+      font-weight: 700;
+      color: #111111;
+      line-height: 1.35;
+      text-align: center;
+      direction: rtl;
+      letter-spacing: -0.5px;
+      word-break: break-word;
+      white-space: pre-wrap;
+      max-width: 920px;
+    }
+
+    /* ── Bottom brand bar ───────────────────────────────────── */
+    .brand-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: {{brandColor}};
+      opacity: 0.35;
+    }
+
+    /* ── Logo — bottom center ────────────────────────────────── */
+    .logo-wrap {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.75;
+    }
+
+    .logo-wrap img {
+      height: 52px;
+      max-width: 200px;
+      object-fit: contain;
+    }
+
+    /* ── Corner logo (photo top-left) — optional alternative ── */
+    .corner-logo {
+      position: absolute;
+      top: 24px;
+      left: 28px;
+      width: 80px;
+      height: 80px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.90);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    }
+
+    .corner-logo img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+
+    <!-- TOP HALF: Photo -->
+    <div class="photo">
+      <!-- Logo in top-left corner of photo area -->
+      {{#if logoUrl}}
+      <div class="corner-logo">
+        <img src="{{logoUrl}}" alt="logo" />
+      </div>
+      {{/if}}
+    </div>
+
+    <!-- SEPARATOR -->
+    <div class="separator"></div>
+
+    <!-- BOTTOM HALF: Text panel -->
+    <div class="text-panel">
+      <div class="brand-dot"></div>
+      <div class="hook-text">{{hook}}</div>
+      <div class="brand-bar"></div>
+
+      <!-- Logo centered at very bottom of panel (small, subtle) -->
+      {{#if logoUrl}}
+      <div class="logo-wrap">
+        <img src="{{logoUrl}}" alt="logo" />
+      </div>
+      {{/if}}
+    </div>
+
+  </div>
+</body>
+</html>
