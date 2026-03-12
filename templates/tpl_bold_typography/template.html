@@ -114,6 +114,14 @@
       text-transform: uppercase;
       direction: rtl;
     }
+
+    /* Grid strategy overlay */
+    .grid-frame-overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 100;
+    }
   </style>
 </head>
 <body>
@@ -135,6 +143,7 @@
     {{#if businessName}}
     <div class="biz-name">{{businessName}}</div>
     {{/if}}
+    <div class="grid-frame-overlay" style="{{gridStyle}}"></div>
   </div>
 </body>
 </html>
