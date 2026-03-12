@@ -125,6 +125,14 @@
     }
     .cc-tl { width: 340px; height: 340px; top: -120px; left: -120px; }
     .cc-br { width: 260px; height: 260px; bottom: -80px; right: -80px; }
+
+    /* Grid strategy overlay */
+    .grid-frame-overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 100;
+    }
   </style>
 </head>
 <body>
@@ -149,6 +157,7 @@
       <img src="{{logoUrl}}" alt="logo" />
     </div>
     {{/if}}
+    <div class="grid-frame-overlay" style="{{gridStyle}}"></div>
   </div>
 </body>
 </html>
