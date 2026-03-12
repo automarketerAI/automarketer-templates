@@ -13,6 +13,8 @@
       background: #000;
     }
 
+    body { position: relative; }
+
     .frame {
       position: relative;
       width: 1080px;
@@ -108,14 +110,13 @@
     <div class="biz-tag">{{businessName}}</div>
     {{/if}}
 
-    {{#if logoUrl}}
-    <img src="{{logoUrl}}" alt="logo" onerror="this.style.display='none'" style="position:absolute; top:16px; left:16px; max-width:80px; max-height:50px; object-fit:contain; z-index:60; filter:brightness(0) invert(1);" />
-    {{/if}}
-
     {{#if hook}}
     <div class="hook-text">{{hook}}</div>
     {{/if}}
     <div class="grid-frame-overlay" style="{{gridStyle}}"></div>
   </div>
+  {{#if logoUrl}}
+  <img src="{{logoUrl}}" style="position:absolute; top:18px; left:18px; max-width:90px; max-height:55px; object-fit:contain; z-index:110; display:block; filter:brightness(0) invert(1);" onerror="this.style.display='none'" alt="logo" />
+  {{/if}}
 </body>
 </html>
