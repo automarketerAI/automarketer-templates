@@ -10,62 +10,39 @@
       width: 1080px;
       height: 1080px;
       overflow: hidden;
-      background: #f8f8f6;
+      background: #000;
     }
 
     .frame {
       position: relative;
       width: 1080px;
       height: 1080px;
-      background: #f8f8f6;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* White card */
-    .card {
-      position: relative;
-      width: 880px;
-      height: 880px;
-      background: #ffffff;
-      border: 1px solid #e8e8e6;
-      border-radius: 20px;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* Top half — image */
-    .image-half {
-      position: relative;
-      flex: 0 0 460px;
       overflow: hidden;
     }
 
-    .card-image {
+    /* Full-bleed photo */
+    .bg-photo {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
-      height: 460px;
+      height: 100%;
       object-fit: cover;
       object-position: center;
-      display: block;
     }
 
-    /* Brand accent bar at bottom of image */
-    .image-accent {
+    /* Frosted-glass panel — bottom 32% */
+    .glass-panel {
       position: absolute;
       bottom: 0;
       left: 0;
-      right: 0;
-      height: 5px;
-      background: {{brandColor}};
-    }
-
-    /* Bottom half — text */
-    .text-half {
-      flex: 1;
-      padding: 40px 52px 32px;
+      width: 100%;
+      height: 346px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-top: 4px solid {{brandColor}};
+      padding: 24px 32px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -74,50 +51,26 @@
 
     .hook-text {
       font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
-      font-size: 52px;
-      font-weight: 800;
+      font-size: 48px;
+      font-weight: 700;
       color: #1a1a1a;
-      line-height: 1.2;
-      text-align: right;
-      overflow-wrap: anywhere;
-      word-break: break-word;
-      white-space: normal;
-      margin-bottom: 16px;
-    }
-
-    .body-text {
-      font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
-      font-size: 26px;
-      font-weight: 400;
-      color: #6b6b6b;
-      line-height: 1.5;
+      line-height: 1.25;
       text-align: right;
       overflow-wrap: anywhere;
       word-break: break-word;
       white-space: normal;
     }
 
-    /* Footer with brand dot + logo */
-    .card-footer {
+    /* Logo — top-left corner */
+    .logo-wrap {
       position: absolute;
-      bottom: 28px;
-      left: 52px;
-      right: 52px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .brand-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: {{brandColor}};
-      flex-shrink: 0;
+      top: 48px;
+      left: 48px;
+      height: 52px;
     }
 
     .logo-wrap img {
-      height: 36px;
+      height: 52px;
       max-width: 140px;
       object-fit: contain;
     }
@@ -125,31 +78,19 @@
 </head>
 <body>
   <div class="frame">
-    <div class="card">
-      <!-- Image top half -->
-      <div class="image-half">
-        <img class="card-image" src="{{imageUrl}}" alt="" />
-        <div class="image-accent"></div>
-      </div>
+    <img class="bg-photo" src="{{imageUrl}}" alt="" />
 
-      <!-- Text bottom half -->
-      {{#if hook}}
-      <div class="text-half">
-        <div class="hook-text">{{hook}}</div>
-        <div class="body-text">{{body}}</div>
-      </div>
-      {{/if}}
-
-      <!-- Footer -->
-      <div class="card-footer">
-        <div class="brand-dot"></div>
-        {{#if logoUrl}}
-        <div class="logo-wrap">
-          <img src="{{logoUrl}}" alt="logo" />
-        </div>
-        {{/if}}
-      </div>
+    {{#if hook}}
+    <div class="glass-panel">
+      <div class="hook-text">{{hook}}</div>
     </div>
+    {{/if}}
+
+    {{#if logoUrl}}
+    <div class="logo-wrap">
+      <img src="{{logoUrl}}" alt="logo" />
+    </div>
+    {{/if}}
   </div>
 </body>
 </html>
