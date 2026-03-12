@@ -15,6 +15,8 @@
       background: #000;
     }
 
+    body { position: relative; }
+
     /* ── Root container ─────────────────────────────────────── */
     .frame {
       position: relative;
@@ -147,13 +149,6 @@
     <!-- Top brand accent line -->
     <div class="accent-line"></div>
 
-    <!-- Logo (shown only when logoUrl is provided) -->
-    {{#if logoUrl}}
-    <div class="logo-wrap">
-      <img src="{{logoUrl}}" alt="logo" />
-    </div>
-    {{/if}}
-
     <!-- Hook badge (hidden when hook is empty — e.g. inner carousel slides) -->
     {{#if hook}}
     <div class="badge-wrap">
@@ -164,5 +159,8 @@
     {{/if}}
     <div class="grid-frame-overlay" style="{{gridStyle}}"></div>
   </div>
+  {{#if logoUrl}}
+  <img src="{{logoUrl}}" style="position:absolute; top:18px; left:18px; max-width:90px; max-height:55px; object-fit:contain; z-index:110; display:block;" onerror="this.style.display='none'" alt="logo" />
+  {{/if}}
 </body>
 </html>
