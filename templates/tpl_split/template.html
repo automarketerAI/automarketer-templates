@@ -15,6 +15,8 @@
       background: #FAFAFA;
     }
 
+    body { position: relative; }
+
     /* ── Root: vertical flex split ──────────────────────────── */
     .frame {
       position: relative;
@@ -157,12 +159,6 @@
 
     <!-- TOP HALF: Photo -->
     <div class="photo">
-      <!-- Logo in top-left corner of photo area -->
-      {{#if logoUrl}}
-      <div class="corner-logo">
-        <img src="{{logoUrl}}" alt="logo" />
-      </div>
-      {{/if}}
     </div>
 
     <!-- SEPARATOR -->
@@ -173,16 +169,12 @@
       <div class="brand-dot"></div>
       <div class="hook-text">{{hook}}</div>
       <div class="brand-bar"></div>
-
-      <!-- Logo centered at very bottom of panel (small, subtle) -->
-      {{#if logoUrl}}
-      <div class="logo-wrap">
-        <img src="{{logoUrl}}" alt="logo" />
-      </div>
-      {{/if}}
     </div>
 
     <div class="grid-frame-overlay" style="{{gridStyle}}"></div>
   </div>
+  {{#if logoUrl}}
+  <img src="{{logoUrl}}" style="position:absolute; top:18px; left:18px; max-width:90px; max-height:55px; object-fit:contain; z-index:110; display:block;" onerror="this.style.display='none'" alt="logo" />
+  {{/if}}
 </body>
 </html>
