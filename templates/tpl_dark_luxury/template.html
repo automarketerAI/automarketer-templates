@@ -32,15 +32,15 @@
       opacity: 1;
     }
 
-    /* Gradient overlay — transparent top 60%, subtle dark only at bottom */
+    /* Gradient overlay — transparent top 45%, very light dark only at bottom */
     .gradient-overlay {
       position: absolute;
       inset: 0;
       background: linear-gradient(
         to top,
-        rgba(0,0,0,0.55) 0%,
-        rgba(0,0,0,0.20) 35%,
-        transparent 60%
+        rgba(0,0,0,0.35) 0%,
+        rgba(0,0,0,0.08) 30%,
+        transparent 45%
       );
     }
 
@@ -58,7 +58,7 @@
       text-align: right;
       direction: rtl;
       letter-spacing: -0.5px;
-      text-shadow: 0 2px 24px rgba(0,0,0,0.7);
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
       overflow-wrap: anywhere;
       word-break: break-word;
       white-space: normal;
@@ -79,6 +79,14 @@
       filter: brightness(0) invert(1);
       opacity: 1;
     }
+
+    /* Grid strategy overlay — sits above all content, pointer-events:none */
+    .grid-frame-overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 100;
+    }
   </style>
 </head>
 <body>
@@ -95,6 +103,7 @@
       <img src="{{logoUrl}}" alt="logo" />
     </div>
     {{/if}}
+    <div class="grid-frame-overlay" style="{{gridStyle}}"></div>
   </div>
 </body>
 </html>
