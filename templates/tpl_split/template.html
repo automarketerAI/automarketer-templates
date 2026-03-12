@@ -121,6 +121,14 @@
       object-fit: contain;
     }
 
+    /* ── Grid strategy overlay ──────────────────────────────── */
+    .grid-frame-overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 100;
+    }
+
     /* ── Corner logo (photo top-left) — optional alternative ── */
     .corner-logo {
       position: absolute;
@@ -174,6 +182,7 @@
       {{/if}}
     </div>
 
+    <div class="grid-frame-overlay" style="{{gridStyle}}"></div>
   </div>
 </body>
 </html>
