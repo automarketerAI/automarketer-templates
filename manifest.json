@@ -7,7 +7,7 @@
       "static_post",
       "carousel"
     ],
-    "thumbnail": null,
+    "thumbnail": "https://res.cloudinary.com/dozvwde3w/image/upload/v1773486932/template-thumbnails/tpl_tpl_bold_typography_b1e32356.png",
     "html": "https://raw.githubusercontent.com/automarketerAI/automarketer-templates/main/templates/tpl_bold_typography/template.html",
     "source": "github"
   },
@@ -19,7 +19,7 @@
       "static_post",
       "carousel"
     ],
-    "thumbnail": null,
+    "thumbnail": "https://res.cloudinary.com/dozvwde3w/image/upload/v1773486936/template-thumbnails/tpl_tpl_dark_luxury_21053b11.png",
     "html": "https://raw.githubusercontent.com/automarketerAI/automarketer-templates/main/templates/tpl_dark_luxury/template.html",
     "source": "github"
   },
@@ -31,7 +31,7 @@
       "static_post",
       "carousel"
     ],
-    "thumbnail": null,
+    "thumbnail": "https://res.cloudinary.com/dozvwde3w/image/upload/v1773486941/template-thumbnails/tpl_tpl_magazine_213240b0.png",
     "html": "https://raw.githubusercontent.com/automarketerAI/automarketer-templates/main/templates/tpl_magazine/template.html",
     "source": "github"
   },
@@ -43,7 +43,7 @@
       "static_post",
       "carousel"
     ],
-    "thumbnail": null,
+    "thumbnail": "https://res.cloudinary.com/dozvwde3w/image/upload/v1773486946/template-thumbnails/tpl_tpl_minimal_card_ee7ee472.png",
     "html": "https://raw.githubusercontent.com/automarketerAI/automarketer-templates/main/templates/tpl_minimal_card/template.html",
     "source": "github"
   },
@@ -55,7 +55,7 @@
       "static_post",
       "carousel"
     ],
-    "thumbnail": null,
+    "thumbnail": "https://res.cloudinary.com/dozvwde3w/image/upload/v1773486951/template-thumbnails/tpl_tpl_photo_clean_b8534217.png",
     "html": "https://raw.githubusercontent.com/automarketerAI/automarketer-templates/main/templates/tpl_photo_clean/template.html",
     "source": "github"
   },
@@ -67,7 +67,7 @@
       "static_post",
       "carousel"
     ],
-    "thumbnail": null,
+    "thumbnail": "https://res.cloudinary.com/dozvwde3w/image/upload/v1773486955/template-thumbnails/tpl_tpl_quote_solid_98906b12.png",
     "html": "https://raw.githubusercontent.com/automarketerAI/automarketer-templates/main/templates/tpl_quote_solid/template.html",
     "source": "github"
   },
@@ -79,7 +79,7 @@
       "static_post",
       "carousel"
     ],
-    "thumbnail": null,
+    "thumbnail": "https://res.cloudinary.com/dozvwde3w/image/upload/v1773486960/template-thumbnails/tpl_tpl_split_5617b6b3.png",
     "html": "https://raw.githubusercontent.com/automarketerAI/automarketer-templates/main/templates/tpl_split/template.html",
     "source": "github"
   },
@@ -90,7 +90,7 @@
     "supports": [
       "story"
     ],
-    "thumbnail": null,
+    "thumbnail": "https://res.cloudinary.com/dozvwde3w/image/upload/v1773486966/template-thumbnails/tpl_tpl_story_vertical_8afb3ccb.png",
     "html": "https://raw.githubusercontent.com/automarketerAI/automarketer-templates/main/templates/tpl_story_vertical/template.html",
     "source": "github"
   }
