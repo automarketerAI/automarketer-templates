@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Listicle Template</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      font-family: 'Assistant', sans-serif;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    .frame {
+      width: 1080px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      background: #FAFAF8;
+    }
+
+    /* Diagonal stripe accent top-left */
+    .corner-accent {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 220px;
+      height: 220px;
+      background: var(--brand);
+      opacity: 0.08;
+      clip-path: polygon(100% 0, 0 0, 100% 100%);
+      z-index: 0;
+    }
+
+    /* Title block */
+    .title-block {
+      padding: 52px 64px 0 64px;
+      position: relative;
+      z-index: 1;
+    }
+    .title-eyebrow {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--brand);
+      margin-bottom: 10px;
+    }
+    .main-title {
+      font-size: 88px;
+      font-weight: 900;
+      line-height: 0.95;
+      color: #111;
+      letter-spacing: -0.03em;
+    }
+    .title-divider {
+      margin-top: 22px;
+      height: 5px;
+      background: var(--brand);
+      border-radius: 2px;
+      width: 100%;
+    }
+
+    /* List items container */
+    .items-block {
+      padding: 32px 64px 0 64px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Single list item */
+    .list-item {
+      display: flex;
+      align-items: stretch;
+      gap: 24px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      overflow: hidden;
+      height: 174px;
+      border: 1.5px solid rgba(0,0,0,0.06);
+    }
+
+    /* Number badge column */
+    .item-num {
+      min-width: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--brand);
+      font-size: 48px;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    /* Photo */
+    .item-photo {
+      width: 240px;
+      min-width: 240px;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Text content */
+    .item-text {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 20px 28px 20px 0;
+    }
+    .item-heading {
+      font-size: 26px;
+      font-weight: 800;
+      color: #111;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    .item-body {
+      font-size: 16px;
+      font-weight: 400;
+      color: #666;
+      line-height: 1.55;
+    }
+    .item-tag {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--brand);
+      background: rgba(0,0,0,0.04);
+      padding: 3px 10px;
+      border-radius: 20px;
+      width: fit-content;
+    }
+
+    /* Bottom bar with logo */
+    .bottom-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 72px;
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 64px;
+      z-index: 2;
+    }
+    .bottom-bar .brand-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--brand);
+      display: inline-block;
+      margin-left: 12px;
+    }
+    .bottom-bar .tagline {
+      font-size: 15px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.06em;
+    }
+    .logo-wrap {
+      height: 38px;
+      display: flex;
+      align-items: center;
+    }
+    .logo-wrap img {
+      max-height: 38px;
+      max-width: 140px;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+    }
+  </style>
+</head>
+<body style="background:#eee; display:flex; align-items:center; justify-content:center; min-height:100vh;">
+
+  <div class="frame" style="--brand: {{brandColor}};">
+
+    <!-- Corner accent -->
+    <div class="corner-accent"></div>
+
+    <!-- Title -->
+    <div class="title-block">
+      <div class="title-eyebrow">✦ המדריך המלא</div>
+      <h1 class="main-title">{{hook}}</h1>
+      <div class="title-divider"></div>
+    </div>
+
+    <!-- List Items -->
+    <div class="items-block">
+
+      <!-- Item 1 -->
+      <div class="list-item">
+        <div class="item-num">01</div>
+        <img class="item-photo" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=480&q=80" alt="">
+        <div class="item-text">
+          <div class="item-heading">כותרת הפריט הראשון</div>
+          <div class="item-body">תיאור קצר ומושך שמסביר את הפריט הראשון ברשימה — מה הוא כולל ולמה כדאי לשים לב.</div>
+          <div class="item-tag">טיפ חשוב</div>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="list-item">
+        <div class="item-num">02</div>
+        <img class="item-photo" src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=480&q=80" alt="">
+        <div class="item-text">
+          <div class="item-heading">כותרת הפריט השני</div>
+          <div class="item-body">עוד תיאור מושך ורלוונטי שמסביר מה כולל הפריט השני ומדוע הוא חיוני לכם.</div>
+          <div class="item-tag">חובה לדעת</div>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="list-item">
+        <div class="item-num">03</div>
+        <img class="item-photo" src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=480&q=80" alt="">
+        <div class="item-text">
+          <div class="item-heading">כותרת הפריט השלישי</div>
+          <div class="item-body">תיאור הפריט השלישי ברשימה — מידע שימושי שכדאי לקחת בחשבון לפני שמתחילים.</div>
+          <div class="item-tag">מומלץ</div>
+        </div>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="list-item">
+        <div class="item-num">04</div>
+        <img class="item-photo" src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=480&q=80" alt="">
+        <div class="item-text">
+          <div class="item-heading">כותרת הפריט הרביעי</div>
+          <div class="item-body">הפריט האחרון — אבל לא פחות חשוב. טיפ שיכול לשנות את כל החוויה שלכם.</div>
+          <div class="item-tag">בונוס</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="bottom-bar">
+      <div class="tagline">
+        <span class="brand-dot"></span>
+        כל הזכויות שמורות
+      </div>
+      <div class="logo-wrap">
+        <img src="{{logoUrl}}" alt="logo" onerror="this.style.display='none'">
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
