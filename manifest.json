@@ -96,15 +96,15 @@
     "source": "github"
   },
   {
-    "id": "tpl_stat_numbe",
-    "name": "tpl_stat_numbe",
+    "id": "tpl_stat_number",
+    "name": "tpl_stat_number",
     "category": "photo",
     "supports": [
       "static_post",
       "carousel"
     ],
     "thumbnail": null,
-    "html": "https://raw.githubusercontent.com/automarketerAI/automarketer-templates/main/templates/tpl_stat_numbe/template.html",
+    "html": "https://raw.githubusercontent.com/automarketerAI/automarketer-templates/main/templates/tpl_stat_number/template.html",
     "source": "github"
   },
   {
