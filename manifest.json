@@ -60,6 +60,18 @@
     "source": "github"
   },
   {
+    "id": "tpl_notification",
+    "name": "tpl_notification",
+    "category": "photo",
+    "supports": [
+      "static_post",
+      "carousel"
+    ],
+    "thumbnail": null,
+    "html": "https://raw.githubusercontent.com/automarketerAI/automarketer-templates/main/templates/tpl_notification/template.html",
+    "source": "github"
+  },
+  {
     "id": "tpl_photo_clean",
     "name": "tpl_photo_clean",
     "category": "photo",
