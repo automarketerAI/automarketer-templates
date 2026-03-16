@@ -12,6 +12,18 @@
     "source": "github"
   },
   {
+    "id": "tpl_comic",
+    "name": "tpl_comic",
+    "category": "photo",
+    "supports": [
+      "static_post",
+      "carousel"
+    ],
+    "thumbnail": null,
+    "html": "https://raw.githubusercontent.com/automarketerAI/automarketer-templates/main/templates/tpl_comic/template.html",
+    "source": "github"
+  },
+  {
     "id": "tpl_dark_luxury",
     "name": "tpl_dark_luxury",
     "category": "photo",
