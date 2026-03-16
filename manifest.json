@@ -84,6 +84,18 @@
     "source": "github"
   },
   {
+    "id": "tpl_qa",
+    "name": "tpl_qa",
+    "category": "photo",
+    "supports": [
+      "static_post",
+      "carousel"
+    ],
+    "thumbnail": null,
+    "html": "https://raw.githubusercontent.com/automarketerAI/automarketer-templates/main/templates/tpl_qa/template.html",
+    "source": "github"
+  },
+  {
     "id": "tpl_quote_solid",
     "name": "tpl_quote_solid",
     "category": "quote",
