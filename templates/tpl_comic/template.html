@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@800;900&family=Bangers&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    .frame {
+      width: 1080px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      background: var(--brand);
+      font-family: 'Assistant', sans-serif;
+      direction: rtl;
+    }
+
+    /* ── Halftone dot background ── */
+    .halftone {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background-color: var(--brand);
+      background-image: radial-gradient(circle, rgba(0,0,0,0.28) 2.5px, transparent 2.5px);
+      background-size: 18px 18px;
+    }
+
+    /* ── Starburst rays behind everything ── */
+    .rays {
+      position: absolute;
+      inset: -200px;
+      z-index: 1;
+      background: conic-gradient(
+        from 0deg,
+        rgba(255,255,255,0.18) 0deg 12deg,
+        transparent 12deg 24deg,
+        rgba(255,255,255,0.18) 24deg 36deg,
+        transparent 36deg 48deg,
+        rgba(255,255,255,0.18) 48deg 60deg,
+        transparent 60deg 72deg,
+        rgba(255,255,255,0.18) 72deg 84deg,
+        transparent 84deg 96deg,
+        rgba(255,255,255,0.18) 96deg 108deg,
+        transparent 108deg 120deg,
+        rgba(255,255,255,0.18) 120deg 132deg,
+        transparent 132deg 144deg,
+        rgba(255,255,255,0.18) 144deg 156deg,
+        transparent 156deg 168deg,
+        rgba(255,255,255,0.18) 168deg 180deg,
+        transparent 180deg 192deg,
+        rgba(255,255,255,0.18) 192deg 204deg,
+        transparent 204deg 216deg,
+        rgba(255,255,255,0.18) 216deg 228deg,
+        transparent 228deg 240deg,
+        rgba(255,255,255,0.18) 240deg 252deg,
+        transparent 252deg 264deg,
+        rgba(255,255,255,0.18) 264deg 276deg,
+        transparent 276deg 288deg,
+        rgba(255,255,255,0.18) 288deg 300deg,
+        transparent 300deg 312deg,
+        rgba(255,255,255,0.18) 312deg 324deg,
+        transparent 324deg 336deg,
+        rgba(255,255,255,0.18) 336deg 360deg
+      );
+    }
+
+    /* ── Black outline frame ── */
+    .outer-border {
+      position: absolute;
+      inset: 24px;
+      border: 6px solid #000;
+      border-radius: 18px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* ── Ink splat corners ── */
+    .splat {
+      position: absolute;
+      z-index: 3;
+      font-size: 80px;
+      line-height: 1;
+      filter: drop-shadow(0 0 0 #000);
+    }
+
+    /* ── Image panel ── */
+    .image-panel {
+      position: absolute;
+      top: 44px;
+      right: 44px;
+      width: 520px;
+      height: 560px;
+      border: 6px solid #000;
+      border-radius: 12px;
+      overflow: hidden;
+      z-index: 4;
+      box-shadow: 8px 8px 0 #000;
+    }
+    .image-panel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    /* Ben-Day dots overlay on image */
+    .image-panel::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(0,0,0,0.12) 1.5px, transparent 1.5px);
+      background-size: 8px 8px;
+      pointer-events: none;
+    }
+
+    /* ── Action burst (POW!) behind speech bubble ── */
+    .burst {
+      position: absolute;
+      bottom: 160px;
+      left: 30px;
+      width: 560px;
+      height: 480px;
+      z-index: 3;
+    }
+    .burst-svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ── Speech bubble ── */
+    .speech-bubble {
+      position: absolute;
+      bottom: 188px;
+      left: 60px;
+      width: 500px;
+      background: #fff;
+      border: 6px solid #000;
+      border-radius: 24px;
+      padding: 36px 44px 36px 44px;
+      z-index: 6;
+      box-shadow: 6px 6px 0 #000;
+    }
+    /* Bubble tail pointing up-right */
+    .speech-bubble::before {
+      content: '';
+      position: absolute;
+      top: -48px;
+      right: 80px;
+      width: 0; height: 0;
+      border-left: 30px solid transparent;
+      border-right: 30px solid transparent;
+      border-bottom: 52px solid #000;
+    }
+    .speech-bubble::after {
+      content: '';
+      position: absolute;
+      top: -36px;
+      right: 86px;
+      width: 0; height: 0;
+      border-left: 24px solid transparent;
+      border-right: 24px solid transparent;
+      border-bottom: 44px solid #fff;
+    }
+
+    .hook-text {
+      font-family: 'Bangers', 'Assistant', sans-serif;
+      font-size: 52px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: #111;
+      line-height: 1.15;
+      text-align: center;
+    }
+
+    /* ── BANG label ── */
+    .bang-label {
+      position: absolute;
+      top: 44px;
+      left: 44px;
+      z-index: 7;
+    }
+    .bang-label svg { width: 160px; height: 160px; }
+
+    /* ── Bottom strip ── */
+    .bottom-strip {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 120px;
+      background: #000;
+      z-index: 8;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 56px;
+    }
+    .bottom-handle {
+      font-family: 'Bangers', sans-serif;
+      font-size: 28px;
+      letter-spacing: 0.12em;
+      color: var(--brand);
+      text-shadow: 2px 2px 0 rgba(255,255,255,0.2);
+    }
+    .logo-wrap img {
+      max-height: 52px;
+      max-width: 160px;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+    }
+
+    /* ── ZAP sticker top-left ── */
+    .zap-sticker {
+      position: absolute;
+      top: 48px;
+      left: 48px;
+      width: 148px;
+      height: 148px;
+      z-index: 9;
+    }
+
+    /* ── Crown sticker bottom-right ── */
+    .crown-sticker {
+      position: absolute;
+      bottom: 128px;
+      right: 40px;
+      width: 80px;
+      height: 80px;
+      background: #fff;
+      border: 5px solid #000;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      z-index: 9;
+      box-shadow: 4px 4px 0 #000;
+    }
+
+    /* ── Halftone yellow accent blob ── */
+    .yellow-blob {
+      position: absolute;
+      top: 380px;
+      right: 20px;
+      width: 120px;
+      height: 120px;
+      background: #FFE600;
+      border: 4px solid #000;
+      border-radius: 50% 40% 55% 45%;
+      z-index: 5;
+      box-shadow: 4px 4px 0 #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bangers', sans-serif;
+      font-size: 20px;
+      letter-spacing: 0.06em;
+      color: #000;
+      text-align: center;
+      line-height: 1.2;
+    }
+  </style>
+</head>
+<body style="background:#888; display:flex; align-items:center; justify-content:center; min-height:100vh;">
+
+<div class="frame" style="--brand: {{brandColor}};">
+
+  <!-- Halftone bg -->
+  <div class="halftone"></div>
+
+  <!-- Starburst rays -->
+  <div class="rays"></div>
+
+  <!-- Outer border frame -->
+  <div class="outer-border"></div>
+
+  <!-- Image panel -->
+  <div class="image-panel">
+    <img src="{{imageUrl}}" alt="" onerror="this.style.background='linear-gradient(135deg,#e55,#c22)'">
+  </div>
+
+  <!-- Yellow accent blob -->
+  <div class="yellow-blob">WOW!</div>
+
+  <!-- Action burst SVG behind speech bubble -->
+  <div class="burst">
+    <svg class="burst-svg" viewBox="0 0 560 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="
+        280,10 310,140 380,40 350,170 450,100 390,210
+        520,180 430,260 560,280 440,320 540,390
+        410,370 450,470 340,410 320,470 280,400
+        240,470 220,410 110,470 150,370
+        20,390 60,280 0,280 130,260
+        40,180 170,210 110,100 210,170
+        180,40 250,140"
+        fill="#FFE600" stroke="#000" stroke-width="5" stroke-linejoin="round"/>
+    </svg>
+  </div>
+
+  <!-- Speech bubble -->
+  <div class="speech-bubble">
+    <div class="hook-text">{{hook}}</div>
+  </div>
+
+  <!-- ZAP sticker (top-left) -->
+  <div class="zap-sticker">
+    <svg viewBox="0 0 148 148" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="74,4 90,54 140,44 108,84 144,110 94,106 104,144 74,114 44,144 54,106 4,110 40,84 8,44 58,54"
+        fill="#FFE600" stroke="#000" stroke-width="5" stroke-linejoin="round"/>
+      <text x="74" y="82" text-anchor="middle" font-family="Bangers,sans-serif" font-size="32" fill="#000" letter-spacing="1">POW!</text>
+    </svg>
+  </div>
+
+  <!-- Crown sticker -->
+  <div class="crown-sticker">👑</div>
+
+  <!-- Bottom strip -->
+  <div class="bottom-strip">
+    <div class="bottom-handle">@automarketer</div>
+    <div class="logo-wrap">
+      <img src="{{logoUrl}}" alt="logo" onerror="this.style.display='none'">
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
