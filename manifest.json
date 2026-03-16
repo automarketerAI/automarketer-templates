@@ -141,5 +141,17 @@
     "thumbnail": null,
     "html": "https://raw.githubusercontent.com/automarketerAI/automarketer-templates/main/templates/tpl_story_vertical/template.html",
     "source": "github"
+  },
+  {
+    "id": "tpl_testimonial",
+    "name": "tpl_testimonial",
+    "category": "photo",
+    "supports": [
+      "static_post",
+      "carousel"
+    ],
+    "thumbnail": null,
+    "html": "https://raw.githubusercontent.com/automarketerAI/automarketer-templates/main/templates/tpl_testimonial/template.html",
+    "source": "github"
   }
 ]
