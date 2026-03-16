@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Assistant', sans-serif; box-sizing: border-box; margin: 0; padding: 0; }
+
+    .frame {
+      width: 1080px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      background: #f5efe8;
+    }
+
+    /* Subtle dot texture */
+    .texture {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(180,140,120,0.13) 1px, transparent 1px);
+      background-size: 28px 28px;
+      z-index: 0;
+    }
+
+    /* Large decorative circle bg */
+    .circle-deco {
+      position: absolute;
+      border-radius: 50%;
+      z-index: 0;
+    }
+
+    /* Title */
+    .title-block {
+      position: absolute;
+      top: 80px;
+      left: 0; right: 0;
+      text-align: center;
+      z-index: 5;
+    }
+    .title-eyebrow {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(120,70,55,0.55);
+      margin-bottom: 14px;
+    }
+    .title-main {
+      font-size: 96px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 0.95;
+      color: #3d1f18;
+    }
+    .title-main .amp {
+      color: var(--brand);
+      font-style: italic;
+    }
+    .title-divider {
+      width: 60px;
+      height: 3px;
+      background: var(--brand);
+      border-radius: 2px;
+      margin: 20px auto 0;
+      opacity: 0.6;
+    }
+
+    /* Q card */
+    .q-card {
+      position: absolute;
+      top: 350px;
+      right: 80px;
+      width: 420px;
+      background: #fff;
+      border-radius: 32px;
+      padding: 44px 44px 44px 44px;
+      box-shadow: 0 12px 48px rgba(100,60,40,0.10), 0 2px 8px rgba(100,60,40,0.06);
+      z-index: 6;
+      border: 1.5px solid rgba(200,170,150,0.2);
+    }
+    .q-letter {
+      font-size: 110px;
+      font-weight: 900;
+      line-height: 0.85;
+      letter-spacing: -0.04em;
+      color: var(--brand);
+      opacity: 0.25;
+      position: absolute;
+      top: 20px;
+      left: 30px;
+    }
+    .q-label {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(120,70,55,0.5);
+      margin-bottom: 16px;
+    }
+    .q-text {
+      font-size: 26px;
+      font-weight: 600;
+      color: #3d1f18;
+      line-height: 1.5;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* A card */
+    .a-card {
+      position: absolute;
+      top: 500px;
+      left: 80px;
+      width: 460px;
+      border-radius: 32px;
+      padding: 44px 44px 44px 44px;
+      box-shadow: 0 16px 56px rgba(100,60,40,0.18), 0 4px 12px rgba(100,60,40,0.10);
+      z-index: 7;
+      border: 1.5px solid rgba(255,255,255,0.3);
+    }
+    .a-letter {
+      font-size: 110px;
+      font-weight: 900;
+      line-height: 0.85;
+      letter-spacing: -0.04em;
+      color: #fff;
+      opacity: 0.18;
+      position: absolute;
+      top: 20px;
+      right: 30px;
+    }
+    .a-label {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 16px;
+    }
+    .a-text {
+      font-size: 26px;
+      font-weight: 500;
+      color: #fff;
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Quotation mark deco */
+    .quote-mark {
+      position: absolute;
+      font-size: 200px;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--brand);
+      opacity: 0.06;
+      z-index: 1;
+      font-style: italic;
+    }
+
+    /* Bottom bar */
+    .bottom-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0; right: 0;
+      height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 80px;
+      z-index: 10;
+      background: rgba(245,239,232,0.85);
+      backdrop-filter: blur(8px);
+      border-top: 1px solid rgba(180,140,120,0.15);
+    }
+    .handle {
+      font-size: 16px;
+      font-weight: 600;
+      color: rgba(100,60,40,0.45);
+      letter-spacing: 0.06em;
+    }
+    .logo-wrap img {
+      max-height: 38px;
+      max-width: 130px;
+      object-fit: contain;
+      opacity: 0.8;
+    }
+
+    /* Floating badge */
+    .badge {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-weight: 800;
+      z-index: 8;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    }
+  </style>
+</head>
+<body style="background:#ddd; display:flex; align-items:center; justify-content:center; min-height:100vh;">
+
+<div class="frame" style="--brand: {{brandColor}};">
+
+  <!-- Texture -->
+  <div class="texture"></div>
+
+  <!-- Decorative circles -->
+  <div class="circle-deco" style="width:500px; height:500px; top:-120px; left:-160px; background:rgba(180,140,120,0.10);"></div>
+  <div class="circle-deco" style="width:320px; height:320px; bottom:60px; right:-80px; background:rgba(180,140,120,0.08);"></div>
+  <div class="circle-deco" style="width:180px; height:180px; top:280px; left:40px; background:rgba(180,140,120,0.07);"></div>
+
+  <!-- Large quote mark decoration -->
+  <div class="quote-mark" style="top: 300px; right: 20px;">"</div>
+
+  <!-- Title -->
+  <div class="title-block">
+    <div class="title-eyebrow">זמן שאלות</div>
+    <div class="title-main">
+      Q<span class="amp">&</span>A
+    </div>
+    <div class="title-divider"></div>
+  </div>
+
+  <!-- Q Card -->
+  <div class="q-card">
+    <div class="q-letter">Q</div>
+    <div class="q-label">השאלה שלכם</div>
+    <div class="q-text">שאלה נפוצה מהלקוחות שלנו:</div>
+    <!-- Tail pointer -->
+    <div style="position:absolute; bottom:-20px; right:44px; width:0; height:0;
+      border-left:20px solid transparent;
+      border-right:0px solid transparent;
+      border-top:22px solid #fff;
+      filter: drop-shadow(0 4px 4px rgba(100,60,40,0.08));
+    "></div>
+  </div>
+
+  <!-- A Card -->
+  <div class="a-card" style="background: {{brandColor}};">
+    <div class="a-letter">A</div>
+    <div class="a-label">התשובה שלנו</div>
+    <div class="a-text">{{hook}}</div>
+    <!-- Tail pointer -->
+    <div style="position:absolute; top:-20px; left:52px; width:0; height:0;
+      border-left:0px solid transparent;
+      border-right:20px solid transparent;
+      border-bottom:22px solid {{brandColor}};
+    "></div>
+  </div>
+
+  <!-- Floating Q badge -->
+  <div class="badge" style="
+    width: 72px; height: 72px;
+    top: 342px; right: 64px;
+    background: {{brandColor}};
+    font-size: 28px;
+    color: #fff;
+    border: 3px solid #fff;
+  ">Q</div>
+
+  <!-- Floating A badge -->
+  <div class="badge" style="
+    width: 72px; height: 72px;
+    top: 492px; left: 64px;
+    background: #fff;
+    font-size: 28px;
+    color: {{brandColor}};
+    border: 3px solid {{brandColor}};
+  ">A</div>
+
+  <!-- Bottom bar -->
+  <div class="bottom-bar">
+    <div class="handle">@automarketer</div>
+    <div class="logo-wrap">
+      <img src="{{logoUrl}}" alt="logo" onerror="this.style.display='none'">
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
